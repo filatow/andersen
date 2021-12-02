@@ -11,14 +11,21 @@ function convertDecimalToAny(number, base) {
 }
 
 function executeHomeTask() {
-  let number = Number(prompt('Введите целое число:'));
-  let base = Number(prompt('Введите целое число - основание системы счисления:'));
+  let number = prompt('Введите целое число:');
+  number = number ? Number(number) : NaN;
+
+  let base = Number(prompt('Введите основание системы счисления (целое число):'));
+  base = base ? Number(base) : NaN;
 
   for (each of [number, base]) {
     if (isNaN(each) || (each % 1 !== 0)) {
       console.log('Некорректный ввод!');
       return;
     }
+  }
+  if (base < 2) {
+    console.log('Некорректный ввод! Основание системы счисления не может быть меньше 2');
+    return;
   }
   
   console.log(convertDecimalToAny(number, base));
