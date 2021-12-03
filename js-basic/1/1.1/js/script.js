@@ -12,17 +12,16 @@ function convertDecimalToAny(number, base) {
 
 function executeHomeTask() {
   let number = prompt('Введите целое число:');
-  number = number ? Number(number) : NaN;
-
-  let base = Number(prompt('Введите основание системы счисления (целое число):'));
-  base = base ? Number(base) : NaN;
+  let base = prompt('Введите основание системы счисления (целое число):');
 
   for (each of [number, base]) {
+    each = each ? Number(each) : NaN;
     if (isNaN(each) || (each % 1 !== 0)) {
       console.log('Некорректный ввод!');
       return;
     }
   }
+
   if (base < 2) {
     console.log('Некорректный ввод! Основание системы счисления не может быть меньше 2');
     return;
