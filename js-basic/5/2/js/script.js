@@ -12,11 +12,6 @@ class Calculator {
 
     this.setX = this.setX.bind(this);
     this.setY = this.setY.bind(this);
-
-    this.logSum = this.logSum.bind(this);
-    this.logMul = this.logMul.bind(this);
-    this.logSub = this.logSub.bind(this);
-    this.logDiv = this.logDiv.bind(this);
   }
 
   setX(newValue) {
@@ -35,19 +30,19 @@ class Calculator {
     }
   };
 
-  logSum() {
+  logSum = () => {
     console.log(this.x + this.y);
   };
 
-  logMul() {
+  logMul = () => {
     console.log(this.x * this.y);
   };
 
-  logSub() {
+  logSub = () => {
     console.log(this.x - this.y);
   };
 
-  logDiv() {
+  logDiv = () => {
     if (this.y === 0) {
       throw new Error('Ошибка деления не ноль');
     }
@@ -75,4 +70,5 @@ calculator.logDiv(); // 12
 logCalculatorDiv(); // 12
 calculator.setY(20);
 calculator.logSub(); // 40
+logCalculatorDiv(); // 3
 // calculator.setY(444n); // Ошибка!
