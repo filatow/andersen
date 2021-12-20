@@ -1,17 +1,18 @@
-const button = document.getElementById('button');
+{
+  const button = document.getElementById('button');
 
-button.addEventListener('click', () => {
-  Promise.resolve().then(() => console.log('Microtask 1'));
-  console.log('Listener 1');
-});
+  button.addEventListener('click', () => {
+    Promise.resolve().then(() => console.log('Microtask 1'));
+    console.log('Listener 1');
+  });
 
-button.addEventListener('click', () => {
-  Promise.resolve().then(() => console.log('Microtask 2'));
-  console.log('Listener 2');
-});
+  button.addEventListener('click', () => {
+    Promise.resolve().then(() => console.log('Microtask 2'));
+    console.log('Listener 2');
+  });
+}
+/* Порядок вывода 
 
-/* Порядок вывода */
-/*
   Обработчики браузерных событий создают макрозадачи.
   1. После клика на button в очередь макрозадач попадут 2 колбек-функции обработчиков событий.
   2. В условиях отсутствия другого синхронного кода и задач в очереди микрозадач начнется исполнение первой в очереди макрозадачи (первого колбека):
