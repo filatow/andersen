@@ -86,6 +86,7 @@ class Calculator {
   }
 
   executePreviousBinaryOperation(nextOperation) {
+    debugger;
     let operationResult;
     if (this.#operationInProgress) {
       switch (this.#operationInProgress) {
@@ -100,6 +101,11 @@ class Calculator {
           break;
         case this.#operations.DIVIDE:
           operationResult = Number(this.#firstOperandBuffer) / Number(this.#valueOnDisplay);
+          if ([Infinity, -Infinity].includes(operationResult)) {
+            operationResult = 'can\'t divide by 0';
+            this.refreshDisplay(operationResult);
+            this.#isInputDisabled = true;
+          }
           break;
       }
       this.#firstOperandBuffer = null;
